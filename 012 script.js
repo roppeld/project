@@ -34,4 +34,13 @@ const personalMovieDB = {
     actors: {},
     genres: [],
     privat: false
-}
+};
+
+const lastViewFilm = prompt("Один из последних просмотренных фильмов?", ""),
+    topRate = prompt("На сколько оцените его?", ""),
+    lastViewFilm2 = prompt("Один из последних просмотренных фильмов?", ""),
+    topRate2 = prompt("На сколько оцените его?", "");
+
+personalMovieDB.movies[lastViewFilm] = topRate;
+personalMovieDB.movies[lastViewFilm2] = topRate2;
+
