@@ -44,3 +44,4 @@ const lastViewFilm = prompt("Один из последних просмотре
 personalMovieDB.movies[lastViewFilm] = topRate;
 personalMovieDB.movies[lastViewFilm2] = topRate2;
 
+console.log(personalMovieDB);
