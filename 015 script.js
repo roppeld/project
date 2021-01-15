@@ -20,8 +20,17 @@
 
 // Код возьмите из предыдущего домашнего задания
 
+let numberOfFilms;
 
-const numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
+function start() {
+    numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
+
+    while(numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
+        numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
+    }
+}
+
+start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -31,29 +40,52 @@ const personalMovieDB = {
     privat: false
 };
 
-for(let i = 0; i < 2; i++) {
-    const a = prompt("Один из последних просмотренных фильмов?", ""),
-          b = prompt("На сколько оцените его?", "");
-
-    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-        console.log("done");
-        personalMovieDB.movies[a] = b; 
-    } else {
-        console.log("error");
-        i--;
+function showMyBD() {
+    if (personalMovieDB.privat == false) {
+        console.log(personalMovieDB);
     }
-   
- 
 }
 
-if(personalMovieDB.count < 10) {
-   console.log("Просмотрено довольно мало фильмов");
-} else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-    console.log("Вы классический зритель");
-} else if(personalMovieDB.count >= 30) {
-    console.log("Вы киноман");
-} else {
-    console.log("Произошла ошибка");
+function writeYourGenres() {
+    let count = 0;
+    for (let i = 0; i < 3; i++) {
+        count++;
+        const a = prompt(`Ваш любимый жанр под номером ${count}`, '');
+        personalMovieDB.genres[i] = a;
+    }
+
 }
 
-console.log(personalMovieDB);
+function filmsDB() {
+    for(let i = 0; i < 2; i++) {
+        const a = prompt("Один из последних просмотренных фильмов?", ""),
+              b = prompt("На сколько оцените его?", "");
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            console.log("done");
+            personalMovieDB.movies[a] = b; 
+        } else {
+            console.log("error");
+            i--;
+        }
+    }
+}
+
+filmsDB();
+
+function identefitionStatus() {
+    if(personalMovieDB.count < 10) {
+        console.log("Просмотрено довольно мало фильмов");
+     } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+         console.log("Вы классический зритель");
+     } else if(personalMovieDB.count >= 30) {
+         console.log("Вы киноман");
+     } else {
+         console.log("Произошла ошибка");
+     }
+}
+
+identefitionStatus();
+
+writeYourGenres();
+showMyBD();
