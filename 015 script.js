@@ -89,3 +89,27 @@ identefitionStatus();
 
 writeYourGenres();
 showMyBD();
+
+//функции callback 
+// function learnJS(lang, callback) {
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+
+// learnJS('JavaScript', function() {
+//     console.log('Я прошёл этот урок!');
+// });
+
+function learnJS(lang, callback) {
+    console.log(`Я учу: ${lang}`);
+    callback();
+}
+
+function done() {
+    console.log('Я прошёл этот урок!');
+}
+
+learnJS('JavaScript', done); //можно и неанонимную функцию вносить
+                            // тогда просто ее название в аргументы
+
+
