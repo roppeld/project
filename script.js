@@ -14,7 +14,7 @@ answers[0] = prompt('Как Ваше имя?', '');
 answers[1] = prompt('Как Вашa фамилия?', '');
 answers[2] = prompt('Сколько Вам лет?', '');
 
-document.write(answers);
+// document.write(answers); document is deprecated
 
 const category = 'toys';
 

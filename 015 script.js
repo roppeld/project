@@ -23,11 +23,11 @@
 let numberOfFilms;
 
 function start() {
-    numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
+  numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
 
-    while(numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
+  while(numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
         numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
-    }
+  }
 }
 
 start();
