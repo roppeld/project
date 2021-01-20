@@ -75,3 +75,16 @@ function log(a, b, c) {
 const num = [2, 4, 7];
 
 log(...num);
+
+const array = ['a', 'b', 'c'];
+const newAaray = [...array];
+
+console.log(newAaray);
+
+const q = {
+  one: 1,
+  two: 2
+};
+
+const newObbj = {...q};
+
