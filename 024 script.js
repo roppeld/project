@@ -19,72 +19,79 @@
 
 'use strict';
 
-let numberOfFilms;
-
-function start() {
-  numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
-
-  while(numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
-        numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?", "");
-  }
-}
-
-start();
-
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
-    privat: false
-};
+    privat: true,
+    start: function() {
+    personalMovieDB.count = prompt("Сколько фильмов вы уже посмотрели?", "");
 
-function showMyBD() {
-    if (personalMovieDB.privat == false) {
-        console.log(personalMovieDB);
-    }
-}
-
-function writeYourGenres() {
-    let count = 0;
-    for (let i = 0; i < 3; i++) {
-        count++;
-        const a = prompt(`Ваш любимый жанр под номером ${count}`, '');
-        personalMovieDB.genres[i] = a;
-    }
-
-}
-
-function filmsDB() {
-    for(let i = 0; i < 2; i++) {
-        const a = prompt("Один из последних просмотренных фильмов?", ""),
-              b = prompt("На сколько оцените его?", "");
-    
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-            console.log("done");
-            personalMovieDB.movies[a] = b; 
-        } else {
-            console.log("error");
-            i--;
+      while(personalMovieDB.count == null || personalMovieDB.count == '' || 
+                                        isNaN(personalMovieDB.count)) {
+      personalMovieDB.count = prompt("Сколько фильмов вы уже посмотрели?", "");
+      }
+    },
+    showMyDB: function() {
+        if (personalMovieDB.privat == true) {
+            console.log(personalMovieDB);
         }
+    },   
+    toggleVisibleMyDB: function(hidden) {
+         if (!hidden) {
+             personalMovieDB.privat = true;
+         } else {
+             personalMovieDB.privat = false;
+         }
+    },
+    writeGenres: function() {
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+            count++;
+            const a = prompt(`Ваш любимый жанр под номером ${count}`, '');
+            if (a != '' && a != null) {
+                personalMovieDB.genres[i] = a;
+            } else {
+                i--;
+                count--;
+            }
+
+            //  const genre = prompt('Введите ваши любимые жанры через запятую')
+            // .toLowerCase();
+            // if (genre != '' && genre != null) {
+            //     personalMovieDB.genres = genre.split(', ');
+            // } else {
+            //     i--;
+            // }
+        }
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр #${i+1} - это ${item}`); 
+        });
+    },
+    filmsDB: function() {
+        for(let i = 0; i < 2; i++) {
+            const a = prompt("Один из последних просмотренных фильмов?", ""),
+                  b = prompt("На сколько оцените его?", "");
+        
+            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+                console.log("done");
+                personalMovieDB.movies[a] = b; 
+            } else {
+                console.log("error");
+                i--;
+            }
+        }
+    },
+    identefitionStatus: function() {
+        if(personalMovieDB.count < 10) {
+            console.log("Просмотрено довольно мало фильмов");
+         } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+             console.log("Вы классический зритель");
+         } else if(personalMovieDB.count >= 30) {
+             console.log("Вы киноман");
+         } else {
+             console.log("Произошла ошибка");
+         }
     }
-}
-
-filmsDB();
-
-function identefitionStatus() {
-    if(personalMovieDB.count < 10) {
-        console.log("Просмотрено довольно мало фильмов");
-     } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-         console.log("Вы классический зритель");
-     } else if(personalMovieDB.count >= 30) {
-         console.log("Вы киноман");
-     } else {
-         console.log("Произошла ошибка");
-     }
-}
-
-identefitionStatus();
-
-writeYourGenres();
-showMyBD();
+};
