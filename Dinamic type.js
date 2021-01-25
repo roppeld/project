@@ -45,3 +45,11 @@ console.log(typeof(Boolean('4'))); //same, but for boolean
 
 //3) 
 console.log(typeof(!!"44444")); // boolean type, very rare method
+
+console.log(typeof(4 && 1));
+
+console.log(3 || 4);
+console.log(4 || 3);
+console.log(typeof(Infinity));
+console.log("ёжик" > "яблоко");
+
