@@ -39,7 +39,7 @@
                 position: absolute;
                 top: 2px;
                 right: 10px;
-                background: url('../icons/search.svg') center (center / cover) no-repeat;
+                background: url('search.svg') center (center / cover) no-repeat;
                 width: 24px;
                 height: 24px;
             }
@@ -84,7 +84,7 @@
     }
     &__bg {
         height: 360px;
-        background: url('../img/mars.webp') center (center / cover) no-repeat;
+        background: url('mars.webp') center (center / cover) no-repeat;
         background-position: top;
         padding: 107px 0 0 61px;
     }
@@ -165,7 +165,7 @@
                 transform: translateY(-50%);
                 width: 20px;
                 height: 20px;
-                background: url('../icons/Star.svg') center (center / cover) no-repeat;
+                background: url('Star.svg') center (center / cover) no-repeat;
             }
             &:before {
                 content: '';
@@ -186,7 +186,7 @@
                     transform: translateY(-50%);
                     width: 20px;
                     height: 20px;
-                    background: url('../icons/trash.png') center (center / cover) no-repeat;
+                    background: url('trash.png') center (center / cover) no-repeat;
                     cursor: pointer;
                 }
             }
