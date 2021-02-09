@@ -10,7 +10,8 @@
 // // console.log(document.querySelector('[data-current = "3"]'));
 // console.log(document.querySelector('[data-current = "3"]').previousSibling);
 // console.log(document.querySelector('[data-current = "3"]').nextSibling);
-// console.log(document.querySelector('[data-current = "3"]').nextElementSibling);
+// console.log(document.querySelector('[data-current = "3"]')
+//.nextElementSibling);
 // console.log(document.querySelector('[data-current = "3"]')
 // .previousElementSibling);
 

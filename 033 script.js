@@ -90,6 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </li>
         `;
     });
+
+    document.querySelectorAll('.delete').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.remove();//splice вырезает определенный
+            movieDB.movies.splice(i, 1);// элемент с массива 1 - сколько удалить
+        });
+    });
     }
     
     deleteAdv(advs);
