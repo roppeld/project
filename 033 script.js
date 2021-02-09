@@ -38,57 +38,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortArr = (arr) => {
         arr.sort();
     };
-
-    sortArr(movieDB.movies);
     
     const advs = document.querySelectorAll('.promo__adv img'),
           poster = document.querySelector('.promo__bg'),
           genre = poster.querySelector('.promo__genre'),
-          filmsList = document.querySelector('.promo__interactive-list'),
-          form = document.querySelector('form.add'),
-          addInput = form.querySelector('.adding_input'),
-          checkbox = form.querySelector('[type="checkbox"]');
+          movieList = document.querySelector('.promo__interactive-list'),
+          addForm = document.querySelector('.add'),
+          addInput = addForm.querySelector('.adding__input'),
+          checkbox = addForm.querySelector('[type="checkbox"]');
     
-    form.addEventListener('submit', (event) => {
+    addForm.addEventListener('submit', (event) => {
        event.preventDefault();
 
-       const newFilm =addInput.value;
+       const newFilm = addInput.value;
        const favorite = checkbox.checked;
 
        movieDB.movies.push(newFilm);
        sortArr(movieDB.movies);
 
-       createFilmsList(filmsList, movieDB.movies);
+       createFilmsList(movieDB.movies, movieList);
 
        event.target.reset();
     });
     
-    function deleteAds(arr) {
+    const deleteAdv = (arr) => {
         arr.forEach(item => {
             item.remove();
         });
-    }
+    };
     
-    function makeChanges() {
+    const makeChanges = () => {
         poster.style.backgroundImage = 'url("bg.jpg")';
 
         genre.textContent = 'драма';
-    }
+    };
 
-    function createFilmsList(film, parent) {
-        film.innerHTML = "";
+    function createFilmsList(films, parent) {
+        parent.innerHTML = "";
     
-    parent.forEach((film, i) => {
+    films.forEach((film, i) => {
          parent.innerHTML += `
-         <li class="promo__interactive-item">${i +1} ${film}
-         <div class="delete"></div>
-     </li>
-         `;
+            <li class="promo__interactive-item">${i + 1} ${film}
+                <div class="delete"></div>
+            </li>
+        `;
     });
     }
-
-    createFilmsList(filmsList, movieDB.movies);
-    deleteAds(advs);
+    
+    deleteAdv(advs);
     makeChanges();
+    createFilmsList(movieDB.movies, movieList);
     sortArr(movieDB.movies);
 });
